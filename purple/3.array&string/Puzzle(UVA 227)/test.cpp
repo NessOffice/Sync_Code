@@ -1,6 +1,6 @@
 #include <stdio.h>
 int main(){
-	//freopen("in.txt","r",stdin);
+	freopen("in.txt","r",stdin);
 	//freopen("out.txt","w",stdout);
 	int kase=0,bx,by,x,y;
 	char s[7][7],cmd[100];
@@ -14,6 +14,7 @@ int main(){
 				if(s[i][j]==' ')
 					bx=i,by=j;
 		while(scanf("%c",&cmd[++count]) &&cmd[count]!='0');
+		getchar();
 		x=bx,y=by;
 		for(int i=1;i<count;i++){
 			switch(cmd[i]){

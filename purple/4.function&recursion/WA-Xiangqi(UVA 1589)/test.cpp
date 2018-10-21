@@ -6,7 +6,7 @@ struct piece{
 	char type;
 	int x,y;
 }red[8];
-int judge(int i,int way){//1表明该子不将军 
+int judge(int i,int way){//返回1表明该子不对将军构成威胁 
 	int x0=x,y0=y;
 	switch(way){//改变general位置 
 		case 0:x0--;break;
@@ -16,7 +16,7 @@ int judge(int i,int way){//1表明该子不将军
 	}
 	int x1=red[i].x,y1=red[i].y;
 	if(red[i].type=='G'){
-		if(x0!=x1) return 1;//不在一列直接退出 
+		if(x0!=x1) return 1;//两将若不在一列，直接退出 
 		for(int j=0;j<n;j++){//判断中间有无子 
 			if(j==i) continue;
 			if(red[j].x==x0)
