@@ -14,6 +14,7 @@ struct Polynomial *Reverse(struct Polynomial *p){
 		last=temp;
 		temp=temp2;
 	}
+	temp->next=last;
 	head=(struct Polynomial *)malloc(sizeof(struct Polynomial));
 	head->next=temp;
 	return head;
