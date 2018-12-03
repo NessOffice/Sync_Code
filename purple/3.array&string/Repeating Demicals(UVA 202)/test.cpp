@@ -1,10 +1,10 @@
 #include <stdio.h>
 int main(){
 	int a,b;
-	freopen("in.txt","r",stdin);
-	freopen("out.txt","w",stdout);
+//	freopen("in.txt","r",stdin);
+//	freopen("out.txt","w",stdout);
 	while(scanf("%d %d",&a,&b)!=EOF){
-	    int c[1000],d[1000],begin,end=0,flag=0,div=a;
+	    int c[3000],d[3000],begin,end=0,flag=0,div=a;
 	    while(!flag){
 	        div=div-div/b*b;
 	        div*=10;
