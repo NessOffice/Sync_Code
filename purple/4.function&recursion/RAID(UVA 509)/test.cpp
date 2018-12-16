@@ -4,7 +4,7 @@
 #include <cstdio>
 using namespace std; 
 int sizeofBlock,numofBlock,numofDisk;
-char diskData[10][10000],parityType,tempData[10000];
+char diskData[10][10000],parityType,tempData[100000];
 void BinaryToHex(char link[])
 {
 	int len=strlen(link),i=0,num;
@@ -124,7 +124,7 @@ int ReadDisk()
 int main()
 {
 	int kase=1;
-	char link[10000];
+	char link[100000];
 	std::ios::sync_with_stdio(false);
 	freopen("in.txt","r",stdin);
 	freopen("out.txt","w",stdout);
