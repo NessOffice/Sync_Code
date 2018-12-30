@@ -29,40 +29,46 @@ int main()
     return 0;
 }
 
-/* 你的代码将被嵌在这里 */
+/* 浣犵殑浠ｇ爜灏嗚宓屽湪杩欓噷 */
 
-struct ListNode *readlist(){
-	int data,len = 0;
-	struct ListNode *head = NULL,*node,*nodelast = NULL; 
-	while(scanf("%d",&data) && data!=-1){
-		len++;
+struct ListNode *readlist()
+{
+	int data;
+	struct ListNode *last, *node, *head;
+	last = node = head = NULL;
+	while(scanf("%d", &data), data != -1)
+	{
 		node = (struct ListNode *)malloc(sizeof(struct ListNode));
-		node->data = data;
-		node->next = NULL;
-		if(nodelast != NULL) nodelast->next = node;
-		nodelast = node;
-		if(head == NULL) head = node;
-		if(len == 2) head->next = node;
+		node->data = data, node->next = NULL;
+		if(last) last->next = node;
+		last = node;
+		if(head && head->next == NULL) head->next = node;
+		if(head == NULL) head = node, head->next = NULL;
 	}
 	return head;
 }
 
-struct ListNode *getodd( struct ListNode **L ){
-	int len = 0;
-	struct ListNode *head = NULL,*node1,*node2,*nodelast = NULL; 
-	node1 = *L;
-	while(node1){
-		if(node1->data % 2){
-			len++;
-			node2 = (struct ListNode *)malloc(sizeof(struct ListNode));
-			node2->data = node1->data;
-			node2->next = NULL;
-			if(nodelast != NULL) nodelast->next = node2;
-			nodelast = node2;
-			if(head == NULL) head = node2;
-			if(len == 2) head->next = node2;
+struct ListNode *getodd( struct ListNode **L )
+{
+	struct ListNode *oddlast, *last, *node, *oddnode, *head;
+	oddlast = last = oddnode = head = NULL, node = *L;
+	int flag = 1;
+	while(node)
+	{
+		if(node->data & 1){
+			oddnode = (struct ListNode *)malloc(sizeof(struct ListNode));
+			oddnode->data = node->data, oddnode->next = NULL;
+			if(oddlast) oddlast->next = oddnode;
+			oddlast = oddnode;
+			if(flag) *L = node->next;
+			if(head && head->next == NULL) head->next = oddnode; 
+			if(head == NULL) head = oddnode, head->next = NULL;
+		}else{
+			if(last) last->next = node;
+			flag = 0, last = node;
 		}
-		node1 = node1->next;
+		node = node->next;
 	}
+	if(last && last->next && last->next->data&1) last->next = NULL;
 	return head;
 }

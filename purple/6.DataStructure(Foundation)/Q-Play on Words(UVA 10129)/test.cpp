@@ -26,7 +26,7 @@ int main()
 		{
 			char s[1000 + 5];scanf("%s", s);
 			int head = s[0] - 'a', tail = s[strlen(s) - 1] - 'a';
-			G[head][tail] = 1, in[head]++, out[tail]++;//I don't understand the case when G[u][v] is larger than 1
+			G[head][tail] = 1, in[head]++, out[tail]++;//G[u][v]>1的情况如何？
 		}
 		int start = -1, end = -1;
 		bool ok = true;
@@ -44,7 +44,7 @@ int main()
 				if(in[i]){start = i;break;}
 			eulerDFS(start);
 			for(int i = 0;i < maxn && ok;i++)
-				if((in[i] + out[i]) && !vis[i]) ok = false;
+				if((in[i] + out[i]) && !vis[i]) ok = false;//第一个条件确保该点有度
 		}
 		printf("%s", ok? "Ordering is possible.\n":"The door cannot be opened.\n");
 	}

@@ -2,8 +2,8 @@
 #include <cstring>
 using namespace std;
 int main(){
-	//freopen("in.txt","r",stdin);
-	//freopen("out.txt","w",stdout);
+	freopen("in.txt","r",stdin);
+	freopen("out.txt","w",stdout);
 	int n,check[26];
 	char s1[102],s2[102];
 	while(cin>>n && n>0){
