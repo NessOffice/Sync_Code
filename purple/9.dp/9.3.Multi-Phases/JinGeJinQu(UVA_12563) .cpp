@@ -23,7 +23,7 @@ int main()
 				dp[p][t0] = dp[p^1][t0];
 				if(t0 >= w && dp[p^1][t0-w] >= 0)
 					dp[p][t0] = max(dp[p][t0], dp[p^1][t0-w]+1);
-				ansn = max(ansn , dp[p][t0]);
+				ansn = max(ansn, dp[p][t0]);
 			}
 			p ^= 1;
 		}

@@ -1,11 +1,13 @@
 #include <cstdio>
 #include <cstring>
 #include <ctime>
-//the efficience:
-//n = 9 : 10sec
-//n = 8 : 1sec
-//n = 7 : 0.1sec
-//n = 6 : 0.016sec
+/*
+the efficience:
+	n = 9 : 10sec
+	n = 8 : 1sec
+	n = 7 : 0.1sec
+	n = 6 : 0.016sec
+*/
 void next_permutation(int n, int* A, int cur)
 {
 	if(cur > n){

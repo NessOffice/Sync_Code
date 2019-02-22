@@ -3,7 +3,7 @@
 #include <algorithm>
 using namespace std;
 const int maxn = 100 + 10;
-int n, ans, sum, a[maxn], vis[maxn];
+int n, ans, sum = 0, a[maxn], vis[maxn];
 bool cmp(const int& lhs, const int& rhs){return lhs > rhs;}
 bool dfs(int cnt, int pos, int rest)
 {
@@ -36,22 +36,24 @@ int main()
 {
 	//   freopen("in.txt", "r", stdin);
 	//   freopen("out.txt", "w", stdout);
-	while(sum = 0, scanf("%d", &n), n)
+	scanf("%d", &n);
+	int temp, n1 = 0;
+	while(n--)
 	{
-		for(int i = 0;i < n;i++)
-		{
-			scanf("%d", &a[i]);
-			sum += a[i];
-		}
-		sort(a, a + n, cmp);
-		for(int cnt = n;cnt > 0;cnt--)
-		{
-			ans = sum / cnt;
-			if(sum % cnt || ans < a[0]) continue;
-			memset(vis, 0, sizeof(vis));
-			if(dfs(cnt, 0, ans)) break;
-		}
-		printf("%d\n", ans);
+		scanf("%d", &temp);
+		if(temp <= 50)
+			a[n1++] = temp,
+			sum += temp;
 	}
+	n = n1;
+	sort(a, a + n, cmp);
+	for(int cnt = n;cnt > 0;cnt--)
+	{
+		ans = sum / cnt;
+		if(sum % cnt || ans < a[0]) continue;
+		memset(vis, 0, sizeof(vis));
+		if(dfs(cnt, 0, ans)) break;
+	}
+	printf("%d\n", ans);
 	return 0;
 }

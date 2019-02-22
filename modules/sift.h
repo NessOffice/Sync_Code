@@ -8,7 +8,7 @@ void SiftPrime(int m){
 	isP[0]=false;
 	isP[1]=false;
 	for(int i=2;i<=m;i++){
-		if(isP) P[++total]=i;
+		if(isP[i]) P[++total]=i;
 		for(int j=1;j<=total && i*P[j]<=m;j++){
 			isP[i*P[j]]=false;
 			if(!(i%P[j])) break;
