@@ -1,8 +1,8 @@
 import random
 with open('debug_closest_input.txt', 'w') as f:
-	f.write('200\n')
-	for i in range(200):
-		n = 8
+	f.write('1000\n')
+	for i in range(1000):
+		n = random.randint(2, 20)
 		f.write('{n}\n'.format(n = n))
 		for j in range(n):
 			x = random.randint(-100, 100)
