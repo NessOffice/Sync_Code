@@ -1,0 +1,158 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define N 1000010
+#define M 400010
+typedef long long ll;
+
+const int Mod = 1000000007;
+const int INF = 1ll << 30;
+
+struct Matrix
+{
+	int mx[2][2];
+	void init(){memset(mx,0,sizeof(mx));}
+}I;
+
+Matrix operator * (const Matrix &x,const Matrix &y)
+{
+	Matrix res; res.init();
+	for (int i = 0; i < 2; ++i)
+		for (int j = 0; j < 2; ++j)
+			for (int k = 0; k < 2; ++k)
+			{
+				res.mx[i][j] += 1ll * x.mx[i][k] * y.mx[k][j] % Mod;
+				if (res.mx[i][j] >= Mod) res.mx[i][j] -= Mod;
+			}
+	return res;
+}
+
+Matrix Power_Matrix(Matrix a, ll r)
+{
+	Matrix res = I;
+	for (; r; r >>= 1)
+	{
+		if (r & 1) res = res * a;
+		a = a * a;
+	}
+	return res;
+}
+
+
+ll P[10]={0,2,3,5,7,11,13,17,19,23};
+int p[N];
+bool flag[N];
+
+ll Mul(ll x,ll y,ll n)
+{
+	ll res = 0;
+	for (; y; y >>= 1)
+	{
+		if (y & 1) res = (res + x) % n;
+		x = (x + x) % n;
+	}
+	return res;
+}
+
+ll Power(ll a, ll r, ll n)
+{
+	ll res = 1; 
+	for (; r; r >>= 1)
+	{
+		if (r & 1) res = Mul(res, a, n);
+		a = Mul(a, a, n);
+	}
+	return res;
+}
+
+bool Check(ll a, ll r, ll s, ll n)
+{
+	ll x = Power(a, r, n), y;
+
+	while (s--)
+	{
+		y = x; x = Mul(x, x, n);
+		if (x == 1 && !(y == 1 || y == n - 1)) return false;
+	}
+	return x == 1;
+}
+
+bool Is_Prime(ll n)
+{
+	if (n==1) return false;
+	for (int i = 1; i <= 9 && P[i] < n; ++i) if (n % P[i] == 0) return false;
+	if (n <= 23) return true;
+	ll r = n - 1, s = 0;  while (r % 2 == 0) r >>= 1, s++;
+	
+	for (int i = 1; i <= 9; ++i) if (!Check(P[i], r, s, n)) return false;
+	return true;
+}
+
+int F(ll m,int d)
+{
+	if (d == 0) return 1;
+	
+	if (m == 1) return d + 1;
+	if (m == 2) return 2 * d + 1;
+	
+	
+	Matrix A; A.init();
+	A.mx[0][0] = A.mx[1][0] = 1; A.mx[0][1] = d;
+	
+	A = Power_Matrix(A, m - 2);
+	int f1 = d + 1, f2 = 2 * d + 1;
+	
+	return (1ll * A.mx[0][0] * f2 % Mod + 1ll * A.mx[0][1] * f1 % Mod) % Mod;
+}
+
+int Solve(ll n, ll m)
+{
+	int res = 1;
+	for (int i = 1; i <= p[0] && p[i] <= m; ++i)
+	{
+		if (m % p[i]) continue;
+		int d = 0;
+		while (m % p[i] == 0) {m /= p[i], d++;}
+		res = 1ll * res * F(n, d) % Mod;
+	}
+	if (m == 1) return res;
+	
+	if (Is_Prime(m)) return 1ll * res * F(n,1) % Mod;
+	
+	ll t = (ll)sqrt(m); 
+	while (t * t < m) ++t;
+	while (t * t > m) --t;
+	if (t * t == m) return 1ll * res * F(n,2) % Mod;
+	
+	res = 1ll * res * F(n, 1) % Mod; 
+	res = 1ll * res * F(n, 1) % Mod;
+	return res;
+}
+
+
+int main()
+{
+	//freopen("input","r",stdin);
+	//freopen("output","w",stdout);
+	
+	I.mx[0][0] = I.mx[1][1] = 1;
+	for (int i = 2; i < N; ++i)
+	{
+		if (!flag[i]) p[++p[0]] = i;
+		for (int j = 1; j <= p[0] && i * p[j] < N; ++j)
+		{
+			flag[i * p[j]] = true;
+			if (i % p[j] == 0) break;
+		}
+	}
+	
+	ll n, m; int T; 
+	scanf("%d",&T);
+	while (T--)
+	{
+		cin >> n >> m;
+		printf("%d\n", Solve(n, m));
+	}
+
+	return 0;
+}

@@ -1,0 +1,49 @@
+<p>
+Recently, Alice and Bob have learned primes. Also, they have learned that two intergers are coprime if and only if their
+greatest common divisor is 1. Now they come up a math problem related to coprime relation: <br/>
+An int array is perfect if and only if each pair of adjacent elements in the array is coprime. <br/>
+Given two integers <var>N</var> and <var>M</var>, your task is to find how many perfect arrays of size <var>N</var> there are that each element in the array is a positive divisor of <var>M</var>.
+Output the answer mod 10<sup>9</sup> + 7.
+</p>
+
+<h4>Input</h4>
+
+<p>
+The input will consist of multiple cases.<br/>
+The first line will contain a single interger <var>T</var>(<var>T</var> &le; 1000), indicating the number of cases.<br/>
+For the next <var>T</var> lines, each line contains two intergers <var>N</var> and <var>M</var>.(<var>N</var>, <var>M</var> &le; 10<sup>18</sup>)
+</p>
+
+<h4>Output</h4>
+
+<p>
+For each case, output one integer in a separate line, indicating the number of perfect arrays.
+</p>
+
+<h4>Sample Input</h4>
+
+<pre>
+1
+2 6
+</pre>
+
+<h4>Sample Output</h4>
+
+<pre>
+9
+</pre>
+
+<h4>Hint</h4>
+
+<p>
+[1, 1]</br>
+[1, 2]</br>
+[1, 3]</br>
+[1, 6]</br>
+[2, 1]</br>
+[2, 3]</br>
+[3, 1]</br>
+[3, 2]</br>
+[6, 1]
+</p>
+

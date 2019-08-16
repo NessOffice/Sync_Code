@@ -5,6 +5,10 @@
 # 		for j in range(1, i+1):
 # 			f.write('{j}\n'.format(j = j))
 
-for i in range(1, 10):
-	for j in range(i+1, 10):
-		print('{i} {j}'.format(i = i, j = j))
+cnt = 0
+for i in range(1, 31):
+	print(i)
+for i in range(2, 31):
+	print('1 {i}'.format(i = i))
+	cnt += 1
+print(cnt)

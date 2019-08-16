@@ -1,0 +1,36 @@
+<p>
+Sky_miner decides to BG all the members of BG Zhejiang University ACM-ICPC Team. At the same time, he came up with a problem. If you can solve this problem, you can eat one more BG by sky_miner. <br/>
+The problem is about the Odious Number, of which the definition is given below: <br/>
+An Odious Number is a number whose binary representation contains an odd number of '1'. <br/>
+For instance, 10 = (1010)<sub>2</sub> with 2 '1's in its binary representation so it's not an odious number; meanwhile, 7 = (111)<sub>2</sub> with 3 '1's in its binary representation so it's an odious number. <br/>
+Please find the i-th odious number so that you can baipiao one more BG. <br/>
+</p>
+
+<h4>Input</h4>
+
+<p>
+The input will consist of multiple cases.<br/>
+The first line will contain a single integer <var>T</var>(<var>T</var> &le; 100), indicating the number of cases.<br/>
+For the next <var>T</var> lines, each line contains one interger <var>N</var>.(1 &le; <var>N</var> &le; 1e18)
+</p>
+
+<h4>Output</h4>
+
+<p>
+For each case, output one integer in a separate line, indicating the <var>N-th</var> odious number.
+</p>
+
+<h4>Sample Input</h4>
+
+<pre>
+2
+2
+3
+</pre>
+
+<h4>Sample Output</h4>
+
+<pre>
+2
+4
+</pre>

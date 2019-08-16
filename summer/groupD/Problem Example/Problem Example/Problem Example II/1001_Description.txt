@@ -1,0 +1,48 @@
+<p>
+In 2333AD, Johann becomes an astronaut of Wonderland. After finishing the arranged task in Zone-J Universe, he decides to mark some planets there, making them his own colony. </br> </br>
+
+Zone-J Universe is made up of <var>n</var> planets, some pairs of planets are connected by bidirectional wormholes. Overall this area has <var>n</var> - 1 wormholes. We know that it is possible to get to any planet from any other one. The planets are numbered by integers from 1 to <var>n</var>. For every planet we know its value  <var>r<sub>i</sub></var> - the gravitational constant of it. </br>
+
+Johann will travel along some path and mark some planets along the very path. Johann&prime;s path will not pass one planet twice, each time he moves to the adjacent city that hasn&prime;t been previously visited. Thus, Johann will choose one path (without visiting any planet twice) and in some (not necessarily all) planets along the way he will make a mark. </br> </br>
+
+When Johann is marking a planet, he needs to land on the ground first and then take off again. Johann loves challenge. He wants to make sure that, every time he leaves a planet, he must use more strengths than last time. So every time he will mark a planet whose gravitational constant is larger than the previous marked one. In another word, the sequence of gravitational constant <var>r<sub>i</sub></var> in the planets he marks should be strictly increasing. </br> </br>
+
+Since Johann&prime;s home planet is rather small and polluted, he wants to mark as many planets as possible. Help him calculate how many planets he might mark. Remember, Johann can start from any planet he likes. </br> </br>
+</p>
+
+<h4>Input</h4>
+
+<p>
+The input will consist of a series of data. </br>
+For each group of data, the first line of the input contains integer <var>n (2 &le; n &le; 2*10<sup>5</sup>)</var> - the number of planets in Zone-J Universe. The next line contains <var>n</var> integers <var>r<sub>1</sub>, r<sub>2</sub>,..., r<sub>n</sub> (1 &le; r<sub>i</sub> &le; 10<sup>6</sup>)</var>, where <var>r<sub>i</sub></var> is the gravitational constant of the <var>i</var>-th planet. The next <var>n</var> - 1 lines contain the descriptions of the wormholes, one wormhole per line. Each wormhole is defined by a pair of integers <var>a<sub>j</sub>, b<sub>j</sub> (1 &le; a<sub>j</sub>, b<sub>j</sub> &le; n)</var> - the pair of the numbers of the planets that are connected by the <var>j</var>-th wormhole. All numbers in the lines are separated by spaces. </br>
+</p>
+
+<h4>Output</h4>
+
+<p>
+Print the maximum number of planets that Johann can mark. One group of data per line. </br>
+</p>
+
+<h4>Sample Input</h4>
+<pre>
+6
+2 4 7 8 10 2
+3 4
+2 3
+3 6
+1 2
+3 5
+
+5
+2 23 233 2333 23333
+2 4
+1 2
+3 5
+1 3
+</pre>
+
+<h4>Sample Output</h4>
+<pre>
+4
+3
+</pre>
