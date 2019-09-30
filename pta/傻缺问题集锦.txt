@@ -1,0 +1,3 @@
+1.Add two polynomial时候注意加起来等于0的情况要舍去
+
+2.看到Next 就先想一想是不是NULL

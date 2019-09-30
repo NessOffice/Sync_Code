@@ -8,6 +8,7 @@
         "valarray": "cpp",
         "*.tcc": "cpp",
         "tuple": "cpp",
-        "bitset": "cpp"
+        "bitset": "cpp",
+        "type_traits": "cpp"
     }
 }
